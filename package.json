@@ -1,0 +1,16 @@
+{
+  "name": "infinite-scroll",
+  "private": true,
+  "scripts": {
+    "build": "gridsome build",
+    "develop": "gridsome develop",
+    "explore": "gridsome explore"
+  },
+  "dependencies": {
+    "gridsome": "^0.7.0",
+    "tailwindcss": "^2.1.1"
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^4.0.3"
+  }
+}
