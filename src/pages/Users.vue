@@ -1,8 +1,15 @@
 <template>
   <Layout>
     <div>
-      <h1>Random User</h1>
-      <div v-for="user in users" :key="user.first">
+      <div class="text-center bg-gray-100">
+        <h1>Random User</h1>
+        <p>It shows 5 users at the start, scroll down to upload more</p>
+      </div>
+      <div
+        class="flex flex-col place-items-center text-center m-auto border-2 rounded-3xl py-4 my-4 w-1/2 bg-gray-200 hover:bg-gray-300"
+        v-for="user in users"
+        :key="user.first"
+      >
         <div>
           <g-image :src="user.picture.large"></g-image>
         </div>
@@ -11,7 +18,7 @@
           {{ user.name.last }}
         </h2>
         <ul>
-          <li><strong>Birthday:</strong>{{ formatDate(user.dob.date) }}</li>
+          <li><strong>Birthday: </strong>{{ formatDate(user.dob.date) }}</li>
           <li>
             <strong>Location:</strong> {{ user.location.city }},
             {{ user.location.state }}
