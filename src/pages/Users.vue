@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from "axios"
 
 export default {
   metaInfo: {
@@ -39,36 +39,36 @@ export default {
   data() {
     return {
       users: [],
-    };
+    }
   },
   methods: {
     getInitialUsers() {
       axios.get(`https://randomuser.me/api/?results=5`).then((res) => {
-        this.users = res.data.results;
-      });
+        this.users = res.data.results
+      })
     },
     getNextUser() {
       window.onscroll = () => {
         let bottomOfWindow =
           document.documentElement.scrollTop + window.innerHeight ===
-          document.documentElement.offsetHeight;
+          document.documentElement.offsetHeight
         if (bottomOfWindow) {
           axios.get(`https://randomuser.me/api/`).then((res) => {
-            this.users.push(res.data.results[0]);
-          });
+            this.users.push(res.data.results[0])
+          })
         }
-      };
+      }
     },
     formatDate(dateString) {
-      let convertedDate = new Date(dateString);
-      return convertedDate.toDateString();
+      let convertedDate = new Date(dateString)
+      return convertedDate.toDateString()
     },
   },
   beforeMount() {
-    this.getInitialUsers();
+    this.getInitialUsers()
   },
   mounted() {
-    this.getNextUser();
+    this.getNextUser()
   },
-};
+}
 </script>

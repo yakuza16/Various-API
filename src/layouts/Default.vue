@@ -6,7 +6,7 @@
       </strong>
       <nav class="nav">
         <g-link class="nav__link" to="/">Home</g-link>
-        <g-link class="nav__link" to="/about/">About</g-link>
+        <g-link class="nav__link" to="/swapi/">SWAPI</g-link>
         <g-link class="nav__link" to="/users/">Users</g-link>
       </nav>
     </header>
