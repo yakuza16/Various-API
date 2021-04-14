@@ -3,7 +3,7 @@
     <div>
       <h1>Star Wars API</h1>
       <table
-        class="flex flex-col justify-items-center place-items-center bg-gray-300 text-xs lg:text-base my-6"
+        class="flex flex-col justify-items-center bg-gray-300 text-xs lg:text-base my-6"
       >
         <thead class="bg-gray-500 w-full text-center border-2 border-black">
           <tr class="flex justify-items-center place-items-center">
@@ -27,14 +27,22 @@
             <td class="w-1/5 border-2 border-black">
               {{ character.eye_color }}
             </td>
-            <td class="w-1/5 border-2 border-black">{{ character.gender }}</td>
+            <td
+              class="w-1/5 border-2 border-black"
+              :class="{
+                aboveSeventy: character.gender === 'male',
+                underSeventy: character.gender === 'female',
+              }"
+            >
+              {{ character.gender }}
+            </td>
             <td class="w-1/5 border-2 border-black">
               {{ character.hair_color }}
             </td>
             <td
               class="w-1/5 border-2 border-black"
               :class="{
-                aboseSeventy: character.mass > 70,
+                aboveSeventy: character.mass > 70,
                 underSeventy: character.mass < 70,
               }"
             >
@@ -86,7 +94,7 @@ tr:nth-child(even) {
   background-color: #b8c7bf;
 }
 
-.aboseSeventy {
+.aboveSeventy {
   color: rgb(197, 42, 42);
   font-weight: bold;
 }
@@ -107,5 +115,9 @@ tr:hover td::first-letter {
   color: red;
   text-decoration: underline;
   font-weight: bold;
+}
+
+tr:hover td {
+  background-color: rgb(89, 109, 134);
 }
 </style>
