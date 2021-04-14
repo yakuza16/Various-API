@@ -21,6 +21,9 @@
             v-for="character in allCharacters"
             :key="character.name"
           >
+            <td v-for="letter in uniqLetters" :key="letter">
+              {{ letter }}
+            </td>
             <td class="w-1/5 border-2 border-black name">
               {{ character.name }}
             </td>
@@ -66,21 +69,27 @@ export default {
     return {
       baseURL: "https://swapi.dev/api",
       allCharacters: [],
+      uniqLetters: [],
     };
   },
   methods: {
     async getAllCharacters() {
       let counter = 1;
       let response = null;
+      const firstLetters = [];
       do {
         response = (await axios.get(
           `${this.baseURL}/people/?page=${counter++}`
         )).data;
         this.allCharacters.push(...response.results);
+
         this.allCharacters.sort((a, b) =>
           a.name > b.name ? 1 : b.name > a.name ? -1 : 0
         );
       } while (response.next);
+      this.allCharacters.forEach((person) => firstLetters.push(person.name[0]));
+      this.uniqLetters = [...new Set(firstLetters)];
+      // console.log(this.uniqLetters);
     },
   },
   beforeMount() {
