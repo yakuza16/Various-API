@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === "production")
   postcssPlugins.push(purgecss(require("./purgecss.config.js")));
 
 module.exports = {
-  siteName: "Infinite scroll",
+  siteName: "Various API projects",
   plugins: [],
   css: {
     loaderOptions: {
