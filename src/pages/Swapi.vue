@@ -3,50 +3,75 @@
     <div>
       <h1>Star Wars API</h1>
       <table
-        class="flex flex-col justify-items-center bg-gray-300 text-xs lg:text-base my-6"
+        class="border-collapse m-2 text-sm lg:text-base rounded-xl overflow-hidden shadow-2xl"
       >
-        <thead class="bg-gray-500 w-full text-center border-2 border-black">
-          <tr class="flex justify-items-center place-items-center">
-            <th class="w-1/5">Name</th>
-            <th class="w-1/5">Eyes Color</th>
-            <th class="w-1/5">Gender</th>
-            <th class="w-1/5">Hair Color</th>
-            <th class="w-1/5">Height</th>
-            <th class="w-1/5">Mass</th>
+        <thead>
+          <tr class="bg-green-400 text-white text-left font-bold">
+            <th class="p-2">Name</th>
+            <th class="p-2">Eyes Color</th>
+            <th class="p-2">Gender</th>
+            <th class="p-2">Hair Color</th>
+            <th class="p-2">Height</th>
+            <th class="p-2">Mass</th>
           </tr>
         </thead>
-        <tbody class="w-full text-center">
+        <tbody>
           <tr
-            class="border-2 border-black"
+            class="p-2 border-b-2 border-gray-400"
             v-for="character in allCharacters"
             :key="character.name"
           >
-            <td v-for="letter in uniqLetters" :key="letter">
+            <!-- <td v-for="letter in uniqLetters" :key="letter">
               {{ letter }}
-            </td>
-            <td class="w-1/5 border-2 border-black name">
+            </td> -->
+            <td class="p-2">
               {{ character.name }}
             </td>
-            <td class="w-1/5 border-2 border-black">
+            <td
+              class="p-2"
+              :class="{
+                invisible:
+                  character.eye_color === 'unknown' ||
+                  character.eye_color === 'n/a',
+              }"
+            >
               {{ character.eye_color }}
             </td>
             <td
-              class="w-1/5 border-2 border-black"
+              class="p-2"
               :class="{
                 aboveSeventy: character.gender === 'male',
                 underSeventy: character.gender === 'female',
+                invisible:
+                  character.gender === 'unknown' || character.gender === 'n/a',
               }"
             >
               {{ character.gender }}
             </td>
-            <td class="w-1/5 border-2 border-black">
+            <td
+              class="p-2"
+              :class="{
+                invisible:
+                  character.hair_color === 'unknown' ||
+                  character.hair_color === 'n/a',
+              }"
+            >
               {{ character.hair_color }}
             </td>
             <td
-              class="w-1/5 border-2 border-black"
+              class="p-2"
+              :class="{
+                invisible: character.height === 'unknown',
+              }"
+            >
+              {{ character.height }}
+            </td>
+            <td
+              class="p-2"
               :class="{
                 aboveSeventy: character.mass > 70,
                 underSeventy: character.mass < 70,
+                invisible: character.mass === 'unknown',
               }"
             >
               {{ character.mass }}
@@ -100,7 +125,7 @@ export default {
 
 <style>
 tr:nth-child(even) {
-  background-color: #b8c7bf;
+  background-color: #f3f3f3;
 }
 
 .aboveSeventy {
@@ -127,6 +152,10 @@ tr:hover td::first-letter {
 }
 
 tr:hover td {
-  background-color: rgb(89, 109, 134);
+  background-color: rgba(126, 172, 161, 0.644);
+}
+
+tr:last-of-type {
+  border-bottom: 2px solid #009879;
 }
 </style>
