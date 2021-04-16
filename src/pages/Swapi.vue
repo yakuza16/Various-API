@@ -16,15 +16,16 @@
           </tr>
         </thead>
         <tbody>
+          <!-- <tr v-for="letter in uniqLetters" :key="letter">
+            <td colspan="6" role="cell">{{ letter }}</td>
+          </tr> -->
           <tr
             class="p-2 border-b-2 border-gray-400"
             v-for="character in allCharacters"
             :key="character.name"
           >
-            <!-- <td v-for="letter in uniqLetters" :key="letter">
-              {{ letter }}
-            </td> -->
             <td class="p-2">
+              <span class="text-2xl">{{ character.name[0] }}: </span>
               {{ character.name }}
             </td>
             <td
