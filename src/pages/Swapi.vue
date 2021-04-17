@@ -16,16 +16,18 @@
           </tr>
         </thead>
         <tbody>
-          <!-- <tr v-for="letter in uniqLetters" :key="letter">
-            <td colspan="6" role="cell">{{ letter }}</td>
-          </tr> -->
+          <tr>
+            <td>heej</td>
+          </tr>
           <tr
             class="p-2 border-b-2 border-gray-400"
             v-for="character in allCharacters"
             :key="character.name"
           >
             <td class="p-2">
-              <span class="text-2xl">{{ character.name[0] }}: </span>
+              <span ref="letters" class="text-2xl">{{
+                character.name[0]
+              }}</span>
               {{ character.name }}
             </td>
             <td
@@ -95,14 +97,12 @@ export default {
     return {
       baseURL: "https://swapi.dev/api",
       allCharacters: [],
-      uniqLetters: [],
     };
   },
   methods: {
     async getAllCharacters() {
       let counter = 1;
       let response = null;
-      const firstLetters = [];
       do {
         response = (await axios.get(
           `${this.baseURL}/people/?page=${counter++}`
@@ -113,9 +113,6 @@ export default {
           a.name > b.name ? 1 : b.name > a.name ? -1 : 0
         );
       } while (response.next);
-      this.allCharacters.forEach((person) => firstLetters.push(person.name[0]));
-      this.uniqLetters = [...new Set(firstLetters)];
-      // console.log(this.uniqLetters);
     },
   },
   beforeMount() {

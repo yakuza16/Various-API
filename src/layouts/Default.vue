@@ -8,6 +8,7 @@
         <g-link class="nav__link" to="/">Home</g-link>
         <g-link class="nav__link" to="/swapi/">SWAPI</g-link>
         <g-link class="nav__link" to="/users/">Users</g-link>
+        <g-link class="nav__link" to="/harrypotter/">Harry Potter</g-link>
       </nav>
     </header>
     <slot />
