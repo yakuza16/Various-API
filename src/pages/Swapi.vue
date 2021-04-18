@@ -16,18 +16,15 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>heej</td>
-          </tr>
           <tr
-            class="p-2 border-b-2 border-gray-400"
+            class="p-2 border-b-2 border-gray-400 "
             v-for="character in allCharacters"
             :key="character.name"
           >
             <td class="p-2">
-              <span ref="letters" class="text-2xl">{{
-                character.name[0]
-              }}</span>
+              <span class="text-2xl">
+                {{ character.name[0] }}
+              </span>
               {{ character.name }}
             </td>
             <td
