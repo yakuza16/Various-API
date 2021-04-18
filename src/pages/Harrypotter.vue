@@ -31,10 +31,10 @@
         </button>
       </div>
       <ul
-        class="flex flex-col place-items-center my-6 text-center rounded-xl bg-gray-300"
+        class="flex space-x-24 w-1/2 overflow-x-scroll place-items-center my-6 text-center rounded-xl bg-gray-300 m-auto"
       >
         <li
-          class="shadow-sm my-4"
+          class="shadow-sm m-4 w-full"
           v-for="character in houseCharacters"
           :key="character.name"
         >
