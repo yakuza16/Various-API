@@ -2,6 +2,7 @@
   <Layout>
     <div>
       <h1>Star Wars API</h1>
+      <Loader v-if="allCharacters.length === 0" />
       <table
         class="border-collapse m-2 text-sm lg:text-base rounded-xl overflow-hidden shadow-2xl"
       >
@@ -85,8 +86,12 @@
 
 <script>
 import axios from "axios";
+import Loader from "../components/Loader";
 
 export default {
+  components: {
+    Loader,
+  },
   metaInfo: {
     title: "SWAPI",
   },
