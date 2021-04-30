@@ -30,7 +30,9 @@
           Slytherin
         </button>
       </div>
+      <Loader v-if="isLoaderActive" />
       <ul
+        v-else
         class="flex space-x-24 w-1/2 overflow-x-scroll place-items-start my-6 text-center rounded-xl bg-gray-300 m-auto"
       >
         <li
@@ -73,24 +75,33 @@
 
 <script>
 import axios from "axios";
+import Loader from "../components/Loader";
 
 export default {
+  components: {
+    Loader,
+  },
   data() {
     return {
       mainURL: "http://hp-api.herokuapp.com/api/characters",
       mainHouseURL: "http://hp-api.herokuapp.com/api/characters/house/",
       houseCharacters: [],
+      isLoaderActive: false,
     };
   },
   methods: {
     async showHouseCharacters(house) {
+      this.isLoaderActive = !this.isLoaderActive;
       await axios.get(`${this.mainHouseURL}${house}`).then((res) => {
         this.houseCharacters = res.data;
+        this.isLoaderActive = !this.isLoaderActive;
       });
     },
     async showInitialCharacters() {
+      this.isLoaderActive = !this.isLoaderActive;
       await axios.get(this.mainURL).then((res) => {
         this.houseCharacters = res.data;
+        this.isLoaderActive = !this.isLoaderActive;
       });
     },
   },
