@@ -5,15 +5,29 @@
         <div class=" space-y-2 p-4">
           <h1 class="p-2">Pokemon API</h1>
           <p class="p-2">Select pokemon to retrieve info about'em</p>
+          <label class="p-2" for="pokemon_name">Search pokemon</label>
+          <input
+            ref="pokemonSearchInput"
+            @input="searchPokemon"
+            id="pokemon_name"
+            type="text"
+            placeholder="search pokemon"
+            class="px-2 py-1"
+          />
         </div>
-        <div class="p-4" v-if="actualPokemon">
+        <div
+          class="p-4 flex flex-col justify-items-center place-items-center"
+          v-if="actualPokemon"
+        >
           <p>{{ actualPokemon.name }}</p>
-          <div class="flex w-60">
+          <div class="flex">
             <g-image
+              v-if="actualPokemon.sprites.front_default"
               class="h-36"
               :src="actualPokemon.sprites.front_default"
             ></g-image>
             <g-image
+              v-if="actualPokemon.sprites.back_default"
               class="h-36"
               :src="actualPokemon.sprites.back_default"
             ></g-image>
@@ -28,6 +42,7 @@
         <ul class="flex flex-wrap space-x-1 w-8/12">
           <li v-for="pokemon in pokemons" :key="pokemon.name">
             <button
+              ref="pokemonBtn"
               class="shadow-lg p-2"
               @click="getSpecificPokemon(pokemon.name)"
             >
@@ -61,7 +76,6 @@ export default {
     async showInitialPokemons() {
       await axios.get(this.mainURL).then((res) => {
         this.pokemons = res.data.results;
-        // console.log(this.pokemons);
       });
     },
     async getSpecificPokemon(name) {
@@ -69,8 +83,17 @@ export default {
       await axios.get(`${this.mainURLsingle}/${name}`).then((res) => {
         const { name, sprites, types } = res.data;
         this.actualPokemon = { name, sprites, types };
-        console.log(this.actualPokemon);
         this.isLoaderActive = !this.isLoaderActive;
+      });
+    },
+    searchPokemon() {
+      let searchedPokemonName = this.$refs.pokemonSearchInput.value;
+      this.$refs.pokemonBtn.forEach((btn) => {
+        if (!btn.innerHTML.includes(searchedPokemonName)) {
+          btn.classList.add("hidden");
+        } else {
+          btn.classList.remove("hidden");
+        }
       });
     },
   },
