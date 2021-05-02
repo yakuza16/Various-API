@@ -1,6 +1,9 @@
 <template>
   <Layout>
-    <div>
+    <div class="relative">
+      <div class="fixed right-1/4 bottom-1/4">
+        <Loader v-if="isLoaderActive" />
+      </div>
       <header class="flex justify-evenly place-items-center bg-gray-300">
         <div class=" space-y-2 p-4">
           <h1 class="p-2">Pokemon API</h1>
@@ -15,9 +18,10 @@
             class="px-2 py-1"
           />
         </div>
+        <Loader v-if="isLoaderActive" />
         <div
           class="p-4 flex flex-col justify-items-center place-items-center"
-          v-if="actualPokemon"
+          v-else-if="actualPokemon"
         >
           <p>{{ actualPokemon.name }}</p>
           <div class="flex">
@@ -37,8 +41,7 @@
           </p>
         </div>
       </header>
-      <Loader v-if="isLoaderActive" />
-      <div v-else class="flex justify-center py-4">
+      <div class="flex justify-center py-4">
         <ul class="flex flex-wrap space-x-1 w-8/12">
           <li v-for="pokemon in pokemons" :key="pokemon.name">
             <button
@@ -85,6 +88,9 @@ export default {
         this.actualPokemon = { name, sprites, types };
         this.isLoaderActive = !this.isLoaderActive;
       });
+      if (window.pageYOffset > 0) {
+        window.scrollTo(0, 0);
+      }
     },
     searchPokemon() {
       let searchedPokemonName = this.$refs.pokemonSearchInput.value;
