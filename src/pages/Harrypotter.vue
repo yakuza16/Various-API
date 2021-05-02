@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <div>
+    <div class="py-4">
       <h1>Harry Potter characters API</h1>
       <div
         class="flex flex-col w-1/2 m-auto space-y-4 justify-items-center place-items-center"
@@ -33,7 +33,7 @@
       <Loader v-if="isLoaderActive" />
       <ul
         v-else
-        class="flex space-x-24 w-1/2 overflow-x-scroll place-items-start my-6 text-center rounded-xl bg-gray-300 m-auto"
+        class="flex space-x-24 w-1/2 overflow-x-scroll place-items-start my-6 text-center rounded-xl bg-gradient-to-l from-purple-300 via-red-300 to-yellow-300 m-auto"
       >
         <li
           class="shadow-sm m-4 w-full"

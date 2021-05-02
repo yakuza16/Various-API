@@ -1,13 +1,7 @@
 <template>
   <div
-    class="layout bg-gradient-to-l from-purple-300 via-red-300 to-yellow-300"
+    class="layout-home-page bg-gradient-to-l from-purple-300 via-red-300 to-yellow-300"
   >
-    <header class="header">
-      <strong>
-        <g-link to="/">{{ $static.metadata.siteName }}</g-link>
-      </strong>
-      <Navigation />
-    </header>
     <slot />
   </div>
 </template>
@@ -36,25 +30,12 @@ body {
   margin: 0;
   padding: 0;
   line-height: 1.5;
-  background: linear-gradient(to left, #e66465, #9198e5);
 }
 
-.layout {
-  max-width: 760px;
+.layout-home-page {
+  max-width: 100vw;
   margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  height: 80px;
-}
-
-.nav__link {
-  margin-left: 20px;
 }
 </style>

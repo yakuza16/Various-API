@@ -4,8 +4,12 @@
       <div class="fixed right-1/4 bottom-1/4">
         <Loader v-if="isLoaderActive" />
       </div>
-      <header class="flex justify-evenly place-items-center bg-gray-300">
-        <div class=" space-y-2 p-4">
+      <header
+        class="flex justify-evenly place-items-center bg-gradient-to-r from-purple-300 via-red-300 to-yellow-300"
+      >
+        <div
+          class=" space-y-2 p-4 flex flex-col justify-center place-items-start w-1/2"
+        >
           <h1 class="p-2">Pokemon API</h1>
           <p class="p-2">Select pokemon to retrieve info about'em</p>
           <label class="p-2" for="pokemon_name">Search pokemon</label>
@@ -15,12 +19,12 @@
             id="pokemon_name"
             type="text"
             placeholder="search pokemon"
-            class="px-2 py-1"
+            class="px-2 py-1 bg-gradient-to-r from-purple-800 via-red-600 to-yellow-500 font-extrabold text-indigo-200"
           />
         </div>
         <Loader v-if="isLoaderActive" />
         <div
-          class="p-4 flex flex-col justify-items-center place-items-center"
+          class="p-4 flex flex-col justify-items-center place-items-center w-1/2"
           v-else-if="actualPokemon"
         >
           <p>{{ actualPokemon.name }}</p>

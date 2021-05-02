@@ -1,13 +1,15 @@
 <template>
   <Layout>
-    <div>
-      <div class="text-center bg-gray-100">
+    <div class="py-4">
+      <div
+        class="text-center bg-gradient-to-l from-purple-300 via-red-300 to-yellow-300"
+      >
         <h1>Random User</h1>
         <p>It shows 5 users at the start, scroll down to upload more</p>
       </div>
       <Loader v-if="users.length === 0" />
       <div
-        class="flex flex-col place-items-center text-center m-auto border-2 rounded-3xl py-4 my-4 w-1/2 bg-gray-200 hover:bg-gray-300"
+        class="flex flex-col place-items-center text-center m-auto border-2 rounded-3xl py-4 my-4 w-1/2 bg-gradient-to-r from-purple-300 via-red-300 to-yellow-300"
         v-for="user in users"
         :key="user.first"
       >
