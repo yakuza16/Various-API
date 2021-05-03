@@ -2,26 +2,39 @@
   <nav
     class="bg-clip-text text-transparent bg-gradient-to-r from-purple-700 via-red-500 to-yellow-500 p-4 font-extrabold text-xl"
   >
-    <g-link class="nav__link shadow-xl hover:text-indigo-900" to="/"
-      >Home</g-link
+    <g-link
+      class="nav__link shadow-xl hover:text-indigo-900"
+      v-for="(route, index) in routes"
+      :key="index"
+      :to="route.path"
     >
-    <g-link class="nav__link shadow-xl hover:text-indigo-900" to="/swapi/"
-      >SWAPI</g-link
-    >
-    <g-link class="nav__link shadow-xl hover:text-indigo-900" to="/users/"
-      >Users</g-link
-    >
-    <g-link class="nav__link shadow-xl hover:text-indigo-900" to="/harrypotter/"
-      >Harry Potter</g-link
-    >
-    <g-link class="nav__link shadow-xl hover:text-indigo-900" to="/pokemons/"
-      >Pokemons</g-link
-    >
+      <span v-if="route.path.length > 5">{{
+        route.path.substring(1, route.path.length - 1).toUpperCase()
+      }}</span>
+    </g-link>
+
+    <!-- <button @click="route">Click</button> -->
   </nav>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      routes: this.$router.options.routes,
+    };
+  },
+  methods: {
+    route() {
+      return this.routes.pop();
+    },
+  },
+  // computed: {
+  //   onlyRoutes() {
+  //     this.routes = this.routes.pop();
+  //   },
+  // },
+};
 </script>
 
 <style></style>
