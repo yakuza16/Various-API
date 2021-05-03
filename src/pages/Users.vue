@@ -28,6 +28,7 @@
           </li>
         </ul>
       </div>
+      <Loader v-if="loaderActive" />
     </div>
   </Layout>
 </template>
@@ -46,6 +47,7 @@ export default {
   data() {
     return {
       users: [],
+      loaderActive: false,
     };
   },
   methods: {
@@ -55,6 +57,7 @@ export default {
       });
     },
     getNextUser() {
+      this.loaderActive = !this.loaderActive;
       window.onscroll = () => {
         let bottomOfWindow =
           document.documentElement.scrollTop + window.innerHeight ===
@@ -62,6 +65,7 @@ export default {
         if (bottomOfWindow) {
           axios.get(`https://randomuser.me/api/`).then((res) => {
             this.users.push(res.data.results[0]);
+            this.loaderActive = !this.loaderActive;
           });
         }
       };

@@ -37,4 +37,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.active {
+  color: rgba(49, 46, 129);
+}
+</style>
