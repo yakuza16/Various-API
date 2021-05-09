@@ -12,7 +12,9 @@
         >
           <h1 class="p-2">Pokemon API</h1>
           <p class="p-2">Select pokemon to retrieve info about'em</p>
-          <label class="p-2" for="pokemon_name">Search pokemon</label>
+          <label class="p-2 cursor-pointer" for="pokemon_name"
+            >Search pokemon</label
+          >
           <input
             ref="pokemonSearchInput"
             @input="searchPokemon"
@@ -97,7 +99,9 @@ export default {
       }
     },
     searchPokemon() {
-      let searchedPokemonName = this.$refs.pokemonSearchInput.value;
+      const searchedPokemonName = this.$refs.pokemonSearchInput.value
+        .toLowerCase()
+        .trim();
       this.$refs.pokemonBtn.forEach((btn) => {
         if (!btn.innerHTML.includes(searchedPokemonName)) {
           btn.classList.add("hidden");

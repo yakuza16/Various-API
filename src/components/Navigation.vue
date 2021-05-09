@@ -3,12 +3,12 @@
     class="bg-clip-text text-transparent bg-gradient-to-r from-purple-700 via-red-500 to-yellow-500 p-4 font-extrabold text-xl"
   >
     <g-link
-      class="nav__link shadow-xl hover:text-indigo-900"
+      class="nav__link shadow-xl hover:text-indigo-900 rounded-xl p-4"
       v-for="(route, index) in routes"
       :key="index"
       :to="route.path"
     >
-      <span v-if="route.path.length > 5">{{
+      <span v-if="route.path.length > 3">{{
         route.path.substring(1, route.path.length - 1).toUpperCase()
       }}</span>
     </g-link>
