@@ -8,12 +8,10 @@
       :key="index"
       :to="route.path"
     >
-      <span v-if="route.path.length > 3">{{
+      <span v-if="route.path.length > 5">{{
         route.path.substring(1, route.path.length - 1).toUpperCase()
       }}</span>
     </g-link>
-
-    <!-- <button @click="route">Click</button> -->
   </nav>
 </template>
 
@@ -25,15 +23,17 @@ export default {
     };
   },
   methods: {
-    route() {
-      return this.routes.pop();
+    deleteLastRoute() {
+      for (let i = 0; i <= 2; i++) {
+        this.routes.pop();
+      }
     },
   },
-  // computed: {
-  //   onlyRoutes() {
-  //     this.routes = this.routes.pop();
-  //   },
-  // },
+  beforeMount() {
+    if (this.routes.length > 4) {
+      this.deleteLastRoute();
+    }
+  },
 };
 </script>
 
