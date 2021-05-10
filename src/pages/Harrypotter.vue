@@ -33,7 +33,7 @@
       <Loader v-if="isLoaderActive" />
       <ul
         v-else
-        class="flex space-x-24 w-1/2 overflow-x-scroll place-items-start my-6 text-center rounded-xl bg-gradient-to-l from-purple-300 via-red-300 to-yellow-300 m-auto"
+        class="flex space-x-24 w-full xl:w-1/2 overflow-x-scroll place-items-start place-content-start my-6 text-center rounded-xl bg-gradient-to-r from-purple-300 via-red-300 to-yellow-300 m-auto"
       >
         <li
           class="shadow-sm m-4 w-full"

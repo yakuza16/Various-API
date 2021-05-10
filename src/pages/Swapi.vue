@@ -4,15 +4,18 @@
       <h1>Star Wars API</h1>
       <Loader v-if="allCharacters.length === 0" />
       <table
-        class="border-collapse m-2 text-sm lg:text-base rounded-xl overflow-hidden shadow-2xl"
+        v-else
+        class="border-collapse m-auto text-sm lg:text-base rounded-xl shadow-2xl"
       >
         <thead>
-          <tr class="bg-green-400 text-white text-left font-bold">
-            <th class="p-2">Name</th>
+          <tr
+            class="bg-gradient-to-bl from-green-500 via-green-300 to-green-700 text-white text-left font-bold"
+          >
+            <th class="p-2 shadow-2xl">Name</th>
             <th class="p-2">Eyes Color</th>
-            <th class="p-2">Gender</th>
+            <th class="p-2 shadow-2xl">Gender</th>
             <th class="p-2">Hair Color</th>
-            <th class="p-2">Height</th>
+            <th class="p-2 shadow-2xl">Height</th>
             <th class="p-2">Mass</th>
           </tr>
         </thead>
@@ -85,8 +88,8 @@
 </template>
 
 <script>
-import axios from "axios";
-import Loader from "../components/Loader";
+import axios from "axios"
+import Loader from "../components/Loader"
 
 export default {
   components: {
@@ -99,28 +102,28 @@ export default {
     return {
       baseURL: "https://swapi.dev/api",
       allCharacters: [],
-    };
+    }
   },
   methods: {
     async getAllCharacters() {
-      let counter = 1;
-      let response = null;
+      let counter = 1
+      let response = null
       do {
         response = (await axios.get(
           `${this.baseURL}/people/?page=${counter++}`
-        )).data;
-        this.allCharacters.push(...response.results);
+        )).data
+        this.allCharacters.push(...response.results)
 
         this.allCharacters.sort((a, b) =>
           a.name > b.name ? 1 : b.name > a.name ? -1 : 0
-        );
-      } while (response.next);
+        )
+      } while (response.next)
     },
   },
   beforeMount() {
-    this.getAllCharacters();
+    this.getAllCharacters()
   },
-};
+}
 </script>
 
 <style>
