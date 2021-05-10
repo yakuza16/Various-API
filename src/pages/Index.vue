@@ -7,15 +7,15 @@
       <div
         class="bg-gradient-to-r from-purple-300 via-red-300 to-yellow-300 w-full h-2/3 flex justify-center place-items-center rounded-3xl"
       >
-        <Navigation class="text-6xl" />
+        <Navigation class="md:text-4xl" />
       </div>
     </div>
   </HomePageLayout>
 </template>
 
 <script>
-import Navigation from "../components/Navigation";
-import HomePageLayout from "../layouts/HomePageLayout";
+import Navigation from "../components/Navigation"
+import HomePageLayout from "../layouts/HomePageLayout"
 export default {
   components: {
     Navigation,
@@ -24,7 +24,7 @@ export default {
   metaInfo: {
     title: "Various API projects",
   },
-};
+}
 </script>
 
 <style>

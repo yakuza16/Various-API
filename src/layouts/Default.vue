@@ -2,11 +2,11 @@
   <div
     class="layout bg-gradient-to-l from-purple-300 via-red-300 to-yellow-300"
   >
-    <header class="header">
+    <header class="flex flex-col justify-items-center place-items-center py-4">
       <strong>
         <g-link to="/">{{ $static.metadata.siteName }}</g-link>
       </strong>
-      <Navigation />
+      <Navigation class="text-sm" />
     </header>
     <slot />
   </div>
@@ -21,12 +21,12 @@ query {
 </static-query>
 
 <script>
-import Navigation from "../components/Navigation";
+import Navigation from "../components/Navigation"
 export default {
   components: {
     Navigation,
   },
-};
+}
 </script>
 
 <style>
@@ -44,14 +44,6 @@ body {
   margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  height: 80px;
 }
 
 .nav__link {

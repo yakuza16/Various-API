@@ -7,25 +7,25 @@
       >
         <button
           @click="showHouseCharacters('gryffindor')"
-          class="shadow-lg w-1/2 border-2 border-red-500 bg-yellow-600 rounded-lg p-1"
+          class="shadow-lg w-3/4 border-2 border-red-500 bg-yellow-600 rounded-lg p-1 xl:w-1/2"
         >
           Gryffindor
         </button>
         <button
           @click="showHouseCharacters('ravenclaw')"
-          class="shadow-lg w-1/2 border-2 border-blue-500 bg-blue-200 rounded-lg p-1"
+          class="shadow-lg w-3/4 border-2 border-blue-500 bg-blue-200 rounded-lg p-1 xl:w-1/2"
         >
           Ravenclaw
         </button>
         <button
           @click="showHouseCharacters('hufflepuff')"
-          class="shadow-lg w-1/2 border-2 border-yellow-500 bg-yellow-200 rounded-lg p-1"
+          class="shadow-lg w-3/4 border-2 border-yellow-500 bg-yellow-200 rounded-lg p-1 xl:w-1/2"
         >
           Hufflepuff
         </button>
         <button
           @click="showHouseCharacters('slytherin')"
-          class="shadow-lg w-1/2 border-2 border-green-300 bg-green-500 rounded-lg p-1"
+          class="shadow-lg w-3/4 border-2 border-green-300 bg-green-500 rounded-lg p-1 xl:w-1/2"
         >
           Slytherin
         </button>
@@ -74,8 +74,8 @@
 </template>
 
 <script>
-import axios from "axios";
-import Loader from "../components/Loader";
+import axios from "axios"
+import Loader from "../components/Loader"
 
 export default {
   components: {
@@ -87,28 +87,28 @@ export default {
       mainHouseURL: "http://hp-api.herokuapp.com/api/characters/house/",
       houseCharacters: [],
       isLoaderActive: false,
-    };
+    }
   },
   methods: {
     async showHouseCharacters(house) {
-      this.isLoaderActive = !this.isLoaderActive;
+      this.isLoaderActive = !this.isLoaderActive
       await axios.get(`${this.mainHouseURL}${house}`).then((res) => {
-        this.houseCharacters = res.data;
-        this.isLoaderActive = !this.isLoaderActive;
-      });
+        this.houseCharacters = res.data
+        this.isLoaderActive = !this.isLoaderActive
+      })
     },
     async showInitialCharacters() {
-      this.isLoaderActive = !this.isLoaderActive;
+      this.isLoaderActive = !this.isLoaderActive
       await axios.get(this.mainURL).then((res) => {
-        this.houseCharacters = res.data;
-        this.isLoaderActive = !this.isLoaderActive;
-      });
+        this.houseCharacters = res.data
+        this.isLoaderActive = !this.isLoaderActive
+      })
     },
   },
   beforeMount() {
-    this.showInitialCharacters();
+    this.showInitialCharacters()
   },
-};
+}
 </script>
 
 <style></style>
