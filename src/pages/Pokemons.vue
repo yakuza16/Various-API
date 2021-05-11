@@ -2,7 +2,7 @@
   <Layout>
     <div class="relative">
       <div class="fixed right-1/4 bottom-1/4">
-        <Loader v-if="isLoaderActive" />
+        <Loader v-if="isLoaderActive && scrollPositionY" />
       </div>
       <header
         class="flex justify-evenly place-items-center bg-gradient-to-r from-purple-300 via-red-300 to-yellow-300"
@@ -79,6 +79,7 @@ export default {
       pokemons: null,
       actualPokemon: null,
       isLoaderActive: false,
+      scrollPositionY: 0,
     }
   },
   methods: {
@@ -93,8 +94,10 @@ export default {
         const { name, sprites, types } = res.data
         this.actualPokemon = { name, sprites, types }
         this.isLoaderActive = !this.isLoaderActive
+        this.scrollPositionY = 0
       })
       if (window.pageYOffset > 0) {
+        this.scrollPositionY = window.pageYOffset
         window.scrollTo(0, 0)
       }
     },
