@@ -30,7 +30,7 @@ export default {
     },
   },
   beforeMount() {
-    if (this.routes.length > 4) {
+    if (this.routes.length > 5) {
       this.deleteLastRoute()
     }
   },

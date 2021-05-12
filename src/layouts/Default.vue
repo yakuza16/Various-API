@@ -36,7 +36,7 @@ body {
   margin: 0;
   padding: 0;
   line-height: 1.5;
-  background: linear-gradient(to left, #e66465, #9198e5);
+  /* background: linear-gradient(to left, #e66465, #9198e5); */
 }
 
 .layout {
