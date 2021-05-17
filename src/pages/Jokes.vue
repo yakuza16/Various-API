@@ -6,7 +6,8 @@
       </div>
     </template>
     <template #aside>
-      <div class=" w-full lg:w-1/4 p-8">
+      <div class=" w-full lg:w-1/4 p-8 relative">
+        <Modal class="absolute inset-0" />
         <button
           @click="getSingleJoke"
           class="p-4 shadow-xl rounded-lg border-green-900 border-4 focus:outline-none focus:ring-2 xl:text-2xl font-extrabold transition duration-500 ease-in-out bg-white text-green-900 hover:text-green-400 hover:bg-green-900 hover:shadow-2xl hover:border-green-200"
@@ -46,6 +47,7 @@
 <script>
 import axios from "axios";
 import Loader from "../components/Loader";
+import Modal from "../components/Modal";
 import Navigation from "../components/Navigation";
 import JokesLayout from "../layouts/JokesLayout";
 
@@ -54,6 +56,7 @@ export default {
     Loader,
     Navigation,
     JokesLayout,
+    Modal,
   },
   data() {
     return {
