@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="isModalActive"
     class="w-full h-full bg-green-900 bg-transparent flex place-items-center shadow-2xl"
   >
     <div
@@ -20,13 +21,15 @@
 
 <script>
 export default {
-  props: { isModalActive: { type: Boolean, default: true } },
+  props: ["isModalActive"],
+
   methods: {
     closeModal() {
-      this.$props.isModalActive = false;
+      this.isModalActive = false
+      console.log(this.isModalActive)
     },
   },
-};
+}
 </script>
 
 <style></style>
