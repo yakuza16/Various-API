@@ -82,7 +82,7 @@ export default {
       this.isLoaderActive = !this.isLoaderActive
       this.jokesCount++
       this.counterForModal++
-      if (this.jokesCount % 2 === 0) {
+      if (this.jokesCount % 7 === 2) {
         this.openModal()
       }
     },
