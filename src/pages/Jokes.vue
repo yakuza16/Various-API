@@ -7,7 +7,7 @@
     </template>
     <template #aside>
       <div class=" w-full lg:w-1/4 p-8 relative">
-        <Modal class="absolute inset-0" :is-modal-active="modalOn" />
+        <Modal class="absolute inset-0" />
         <button
           @click="getSingleJoke"
           class="p-4 shadow-xl rounded-lg border-green-900 border-4 focus:outline-none focus:ring-2 xl:text-2xl font-extrabold transition duration-500 ease-in-out bg-white text-green-900 hover:text-green-400 hover:bg-green-900 hover:shadow-2xl hover:border-green-200"
@@ -40,6 +40,7 @@
         >
         joke<span v-if="jokesCount > 1">s</span>
       </p>
+      <p>Store to: {{ count }}</p>
     </template>
   </JokesLayout>
 </template>
@@ -64,7 +65,6 @@ export default {
       actualJoke: {},
       isLoaderActive: false,
       jokesCount: 0,
-      modalOn: true,
     }
   },
   methods: {
@@ -73,19 +73,26 @@ export default {
       await axios.get(this.jokeAPIBaseURL).then((res) => {
         if (res.data.setup) {
           const { setup, delivery } = res.data
-          //   console.log(setup, delivery)
           this.actualJoke = { setup, delivery }
         } else {
           const { joke } = res.data
-          //   console.log(joke)
           this.actualJoke = { joke }
         }
       })
       this.isLoaderActive = !this.isLoaderActive
       this.jokesCount++
-      if (this.jokesCount == 10) {
-        this.modalOn = true
+      this.counterForModal++
+      if (this.jokesCount % 2 === 0) {
+        this.openModal()
       }
+    },
+    openModal() {
+      this.$store.commit("onOffModal")
+    },
+  },
+  computed: {
+    count() {
+      return this.$store.state.count
     },
   },
   beforeMount() {

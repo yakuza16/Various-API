@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="isModalActive"
+    v-if="this.$store.state.isModalOpen"
     class="w-full h-full bg-green-900 bg-transparent flex place-items-center shadow-2xl"
   >
     <div
@@ -21,12 +21,9 @@
 
 <script>
 export default {
-  props: ["isModalActive"],
-
   methods: {
     closeModal() {
-      this.isModalActive = false
-      console.log(this.isModalActive)
+      this.$store.commit("onOffModal")
     },
   },
 }
