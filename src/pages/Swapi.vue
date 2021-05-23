@@ -2,7 +2,8 @@
   <Layout>
     <div>
       <h1>Star Wars API</h1>
-      <Loader v-if="allCharacters.length === 0" />
+      <!-- <Loader v-if="allCharacters.length === 0" /> -->
+      <Loader v-if="isLoaderOn" />
       <table
         v-else
         class="border-collapse m-auto text-sm lg:text-base rounded-xl shadow-2xl"
@@ -88,8 +89,8 @@
 </template>
 
 <script>
-import axios from "axios"
-import Loader from "../components/Loader"
+import axios from "axios";
+import Loader from "../components/Loader";
 
 export default {
   components: {
@@ -102,28 +103,31 @@ export default {
     return {
       baseURL: "https://swapi.dev/api",
       allCharacters: [],
-    }
+      isLoaderOn: false,
+    };
   },
   methods: {
     async getAllCharacters() {
-      let counter = 1
-      let response = null
+      let counter = 1;
+      let response = null;
       do {
+        this.isLoaderOn = true;
         response = (await axios.get(
           `${this.baseURL}/people/?page=${counter++}`
-        )).data
-        this.allCharacters.push(...response.results)
+        )).data;
+        this.allCharacters.push(...response.results);
 
         this.allCharacters.sort((a, b) =>
           a.name > b.name ? 1 : b.name > a.name ? -1 : 0
-        )
-      } while (response.next)
+        );
+      } while (response.next);
+      this.isLoaderOn = false;
     },
   },
   beforeMount() {
-    this.getAllCharacters()
+    this.getAllCharacters();
   },
-}
+};
 </script>
 
 <style>

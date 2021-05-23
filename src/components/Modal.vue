@@ -11,7 +11,7 @@
       </p>
       <button
         @click="closeModal"
-        class="xl:font-extrabold xl:text-6xl xl:w-1/4 text-red-300 bg-gray-800 p-2"
+        class="xl:font-extrabold xl:text-6xl xl:w-1/4 text-red-300 bg-gray-800 p-2 select-none focus:outline-none"
       >
         X
       </button>

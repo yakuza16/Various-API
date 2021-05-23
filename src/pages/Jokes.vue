@@ -38,12 +38,12 @@
           :class="[jokesCount % 2 ? 'text-white' : 'text-black']"
           >{{ jokesCount }}</span
         >
-        joke<span v-if="jokesCount > 1">s</span>
+        joke<span v-if="jokesCount > 1">s</span> in this session
       </p>
       <p class="w-full text-center pb-2">
         Your read
         <span class="font-extrabold underline"> {{ ads }} </span>
-        advertisement<span v-if="ads !== 1">s</span>
+        advertisement<span v-if="ads !== 1">s</span> since start
       </p>
     </template>
   </JokesLayout>
