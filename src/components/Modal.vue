@@ -11,7 +11,7 @@
       </p>
       <button
         @click="closeModal"
-        class="xl:font-extrabold xl:text-6xl xl:w-1/4"
+        class="xl:font-extrabold xl:text-6xl xl:w-1/4 text-red-300 bg-gray-800 p-2"
       >
         X
       </button>
@@ -23,10 +23,10 @@
 export default {
   methods: {
     closeModal() {
-      this.$store.commit("onOffModal")
+      this.$store.commit("onOffModal");
     },
   },
-}
+};
 </script>
 
 <style></style>

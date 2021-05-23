@@ -40,17 +40,21 @@
         >
         joke<span v-if="jokesCount > 1">s</span>
       </p>
-      <p>Store to: {{ count }}</p>
+      <p class="w-full text-center pb-2">
+        Your read
+        <span class="font-extrabold underline"> {{ ads }} </span>
+        advertisement<span v-if="ads !== 1">s</span>
+      </p>
     </template>
   </JokesLayout>
 </template>
 
 <script>
-import axios from "axios"
-import Loader from "../components/Loader"
-import Modal from "../components/Modal"
-import Navigation from "../components/Navigation"
-import JokesLayout from "../layouts/JokesLayout"
+import axios from "axios";
+import Loader from "../components/Loader";
+import Modal from "../components/Modal";
+import Navigation from "../components/Navigation";
+import JokesLayout from "../layouts/JokesLayout";
 
 export default {
   components: {
@@ -65,40 +69,41 @@ export default {
       actualJoke: {},
       isLoaderActive: false,
       jokesCount: 0,
-    }
+    };
   },
   methods: {
     async getSingleJoke() {
-      this.isLoaderActive = true
+      this.isLoaderActive = true;
       await axios.get(this.jokeAPIBaseURL).then((res) => {
         if (res.data.setup) {
-          const { setup, delivery } = res.data
-          this.actualJoke = { setup, delivery }
+          const { setup, delivery } = res.data;
+          this.actualJoke = { setup, delivery };
         } else {
-          const { joke } = res.data
-          this.actualJoke = { joke }
+          const { joke } = res.data;
+          this.actualJoke = { joke };
         }
-      })
-      this.isLoaderActive = !this.isLoaderActive
-      this.jokesCount++
-      this.counterForModal++
-      if (this.jokesCount % 7 === 2) {
-        this.openModal()
+      });
+      this.isLoaderActive = !this.isLoaderActive;
+      this.jokesCount++;
+      this.counterForModal++;
+      if (this.jokesCount % 4 === 2) {
+        this.openModal();
       }
     },
     openModal() {
-      this.$store.commit("onOffModal")
+      this.$store.commit("onOffModal");
+      this.$store.commit("incrementAdvertisementsCount");
     },
   },
   computed: {
-    count() {
-      return this.$store.state.count
+    ads() {
+      return this.$store.state.advertisements;
     },
   },
   beforeMount() {
-    this.getSingleJoke()
+    this.getSingleJoke();
   },
-}
+};
 </script>
 
 <style></style>
