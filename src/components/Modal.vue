@@ -4,11 +4,9 @@
     class="w-full h-full bg-green-900 bg-transparent flex place-items-center shadow-2xl"
   >
     <div
-      class="flex justify-items-center place-items-center space-y-4 p-4 flex-col"
+      class="flex justify-items-center place-items-center space-y-4 p-4 flex-col w-full"
     >
-      <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-      </p>
+      <WeatherAd />
       <button
         @click="closeModal"
         class="xl:font-extrabold xl:text-6xl xl:w-1/4 text-red-300 bg-gray-800 p-2 select-none focus:outline-none"
@@ -20,13 +18,18 @@
 </template>
 
 <script>
+import WeatherAd from "../components/WeatherAd"
+
 export default {
+  components: {
+    WeatherAd,
+  },
   methods: {
     closeModal() {
-      this.$store.commit("onOffModal");
+      this.$store.commit("onOffModal")
     },
   },
-};
+}
 </script>
 
 <style></style>
