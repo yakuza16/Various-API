@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="this.$store.state.isModalOpen"
-    class="w-full h-full bg-green-900 bg-transparent flex place-items-center shadow-2xl"
+    class="w-full h-full bg-green-900 bg-transparent flex place-items-center shadow-2xl justify-items-center"
   >
     <div
       class="flex justify-items-center place-items-center space-y-4 p-4 flex-col w-full"

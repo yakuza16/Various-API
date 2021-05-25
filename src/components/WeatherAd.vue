@@ -1,9 +1,14 @@
 <template>
-  <div v-if="currentWeatherInPoland.timezone">
+  <div v-if="currentWeatherInPoland" class="text-sm">
     <p>This is weather in {{ currentWeatherInPoland.timezone }}</p>
     <ul>
       <li>Wind: {{ currentWeatherInPoland.current.wind_speed }} km/h</li>
       <li>Pressure: {{ currentWeatherInPoland.current.pressure }} hP</li>
+      <li>
+        Temperature:
+        {{ Math.round(currentWeatherInPoland.current.temp - 273) }}
+        <sup>o</sup> C
+      </li>
     </ul>
   </div>
 </template>
