@@ -74,8 +74,8 @@
 </template>
 
 <script>
-import axios from "axios"
-import Loader from "../components/Loader"
+import axios from "axios";
+import Loader from "../components/Loader";
 
 export default {
   components: {
@@ -83,32 +83,32 @@ export default {
   },
   data() {
     return {
-      mainURL: "http://hp-api.herokuapp.com/api/characters",
-      mainHouseURL: "http://hp-api.herokuapp.com/api/characters/house/",
+      mainURL: "https://hp-api.herokuapp.com/api/characters",
+      mainHouseURL: "https://hp-api.herokuapp.com/api/characters/house/",
       houseCharacters: [],
       isLoaderActive: false,
-    }
+    };
   },
   methods: {
     async showHouseCharacters(house) {
-      this.isLoaderActive = !this.isLoaderActive
+      this.isLoaderActive = !this.isLoaderActive;
       await axios.get(`${this.mainHouseURL}${house}`).then((res) => {
-        this.houseCharacters = res.data
-        this.isLoaderActive = !this.isLoaderActive
-      })
+        this.houseCharacters = res.data;
+        this.isLoaderActive = !this.isLoaderActive;
+      });
     },
     async showInitialCharacters() {
-      this.isLoaderActive = !this.isLoaderActive
+      this.isLoaderActive = !this.isLoaderActive;
       await axios.get(this.mainURL).then((res) => {
-        this.houseCharacters = res.data
-        this.isLoaderActive = !this.isLoaderActive
-      })
+        this.houseCharacters = res.data;
+        this.isLoaderActive = !this.isLoaderActive;
+      });
     },
   },
   beforeMount() {
-    this.showInitialCharacters()
+    this.showInitialCharacters();
   },
-}
+};
 </script>
 
 <style></style>
