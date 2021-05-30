@@ -49,8 +49,10 @@
             <p v-if="character.ancestry">
               Ancestry: <span>{{ character.ancestry }}</span>
             </p>
-            <div class="w-28 m-auto my-2">
-              <g-image class="" :src="character.image"></g-image>
+            <div
+              class="w-28 max-h-60 m-auto my-2 flex flex-col place-items-center justify-items-center"
+            >
+              <g-image class="w-16" :src="character.image"></g-image>
               <figcaption>Actor: {{ character.actor }}</figcaption>
             </div>
             <p
