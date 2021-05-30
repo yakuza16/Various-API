@@ -1,14 +1,17 @@
-# Default starter for Gridsome
+# [Various API projects](https://various-api.netlify.app/ "Various API projects")
 
-This is the project you get when you run `gridsome create new-project`.
+![](https://cdn0.iconfinder.com/data/icons/thin-line-icons-for-seo-and-development-1/64/Programming_Development_Api-256.png)
 
-### 1. Install Gridsome CLI tool if you don't have
+## PWA made in:
 
-`npm install --global @gridsome/cli`
+**Gridsome**   ![](https://ghost.org/docs/jamstack/img/gridsome-logo.svg)
 
-### 2. Create a Gridsome project
-
-1. `gridsome create my-gridsome-site` to install default starter
-2. `cd my-gridsome-site` to open the folder
-3. `gridsome develop` to start a local dev server at `http://localhost:8080`
-4. Happy coding 🎉🙌
+------------
+Progressive Web Application written in ssg Gridsome + tailwind CSS.
+I used six different API's to fetch data and display them.
+1) Users API - fetch random user data and display them. In this case I also used infinite-scroll trick, so when we scroll down the site, next user data is fetching and displaying.
+2) Star Wars API - I'm displaying informations about Star Wars characters in a table, sorted alphabetically by name.
+3) Pokemons API - at the start I'm fetching all the pokemons names. After that we can filter pokemon by name (if we want to), after clicking on a name, we are fetching the data about the specific one, and displaying image and info about'em.
+4) Harry Potter API - displaying all characters from HP movies, with some infos and images. We can also select the specific house characters.
+5) Jokes API - fetch random joke. I used VUEX in this one, to store the number of jokes fetched. It collaborates with another one:
+6) Weather API - it is implemented inside Jokes page, becouse after fetching few jokes, the modal is showing up, and displays the weather informations in Poland.
